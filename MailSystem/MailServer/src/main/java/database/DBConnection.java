@@ -1,16 +1,23 @@
+
 package database;
 
-import java.sql.*;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
 
 public class DBConnection {
-    // Có thể đổi bằng biến môi trường DB_URL, DB_USER, DB_PASS
-    static final String URL = env("DB_URL", "jdbc:mysql://localhost:3306/mail_system?useUnicode=true&characterEncoding=UTF-8&serverTimezone=Asia/Ho_Chi_Minh");
-    static final String USER = env("DB_USER", "root");
-    static final String PASS = env("DB_PASS", "");
 
-    static String env(String k, String d) { String v = System.getenv(k); return v == null ? d : v; }
+    // Thông tin kết nối MySQL
+    private static final String URL =
+            "jdbc:mysql://localhost:3306/mail_system?useUnicode=true&characterEncoding=UTF-8&serverTimezone=Asia/Ho_Chi_Minh";
+
+    private static final String USER = "root";
+
+    // Nhập mật khẩu MySQL của bạn tại đây
+    private static final String PASS = "Thang#2006";
 
     public static Connection getConnection() throws SQLException {
         return DriverManager.getConnection(URL, USER, PASS);
     }
 }
+
